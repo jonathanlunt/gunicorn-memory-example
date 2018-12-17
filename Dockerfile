@@ -1,8 +1,8 @@
-FROM python:3.6-alpine3.8
+FROM python:3.6-slim
 
 RUN pip install gunicorn
 
 COPY *.py /opt/
 WORKDIR /opt
 
-ENTRYPOINT ["gunicorn", "app:app", "-c", "config.py"]
+ENTRYPOINT ["gunicorn",  "-c", "config.py", "app:app"]
